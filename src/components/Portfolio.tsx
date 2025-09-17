@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     name: 'E-Commerce Platform',
     description: 'A full-stack e-commerce solution with modern design, payment integration, and analytics dashboard.',
-    image: '/api/placeholder/600/400',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
     category: 'Web Development',
     gradient: 'from-blue-500 to-cyan-500',
@@ -20,7 +20,7 @@ const projects = [
     id: 2,
     name: 'Brand Identity Design',
     description: 'Complete brand identity package including logo design, color palette, and marketing materials.',
-    image: '/api/placeholder/600/400',
+    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     technologies: ['Adobe Creative Suite', 'Figma', 'Brand Strategy'],
     category: 'Graphics Design',
     gradient: 'from-orange-500 to-red-500',
@@ -31,7 +31,7 @@ const projects = [
     id: 3,
     name: 'AI-Powered Analytics',
     description: 'Machine learning platform for business intelligence and predictive data analytics.',
-    image: '/api/placeholder/600/400',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     technologies: ['Python', 'TensorFlow', 'AWS', 'React'],
     category: 'AI/ML',
     gradient: 'from-indigo-500 to-purple-500',
@@ -42,7 +42,7 @@ const projects = [
     id: 4,
     name: 'Digital Marketing Campaign',
     description: 'Comprehensive digital marketing strategy with social media management and SEO optimization.',
-    image: '/api/placeholder/600/400',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     technologies: ['Social Media', 'SEO', 'Content Marketing', 'Analytics'],
     category: 'Digital Marketing',
     gradient: 'from-green-500 to-emerald-500',
@@ -153,15 +153,16 @@ export default function Portfolio() {
                 
                 {/* Project Visual */}
                 <div className={`bg-gradient-to-br ${projects[currentProject].gradient} p-12 flex items-center justify-center relative overflow-hidden`}>
-                  {/* Enhanced project mockup */}
-                  <div className="text-center text-white relative z-10">
-                    <div className="w-40 h-32 bg-white/20 rounded-2xl mx-auto mb-6 flex items-center justify-center backdrop-blur-sm border border-white/30 shadow-2xl">
-                      <div className="w-24 h-20 bg-white/30 rounded-xl flex items-center justify-center">
-                        <div className="w-16 h-12 bg-white/40 rounded-lg"></div>
-                      </div>
+                  {/* Real project image */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    <div className="w-full max-w-md h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+                      <img 
+                        src={projects[currentProject].image} 
+                        alt={projects[currentProject].name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </div>
-                    <p className="text-lg font-medium">Project Screenshot</p>
-                    <p className="text-sm opacity-80 mt-2">Interactive Demo Available</p>
                   </div>
                   
                   {/* Decorative elements */}
