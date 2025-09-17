@@ -207,188 +207,244 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Animated Stick Figure Cartoon Character */}
+      {/* Big Dynamic Cartoon Character */}
       <motion.div
-        initial={{ x: -200, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        initial={{ x: -300, y: 200, opacity: 0 }}
+        animate={{ 
+          x: currentSlide === 0 ? 50 : currentSlide === 1 ? 200 : 100,
+          y: currentSlide === 0 ? 150 : currentSlide === 1 ? 100 : 200,
+          opacity: 1
+        }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute left-8 bottom-20 z-20"
+        className="absolute z-30 cursor-pointer"
+        onClick={nextSlide}
       >
         <motion.div
           animate={{ 
-            x: [0, 15, 0],
-            rotate: [0, 10, 0]
+            rotate: [0, 5, -5, 0],
+            scale: [1, 1.05, 1]
           }}
           transition={{ 
-            duration: 2.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="cursor-pointer"
-          onClick={nextSlide}
+          className="relative"
         >
-          {/* Stick Figure Character */}
-          <div className="relative">
-            {/* Character Body */}
-            <svg width="120" height="120" viewBox="0 0 120 120" className="drop-shadow-2xl">
-              {/* Head */}
-              <circle 
-                cx="60" 
-                cy="25" 
-                r="12" 
-                fill="none" 
-                stroke="#ffffff" 
-                strokeWidth="3"
-                className="drop-shadow-lg"
-              />
-              
-              {/* Eyes - animated based on slide */}
-              <motion.circle
-                animate={{ 
-                  scale: currentSlide === 0 ? [1, 1.2, 1] : 1,
-                  opacity: currentSlide === 0 ? [1, 0.5, 1] : 1
-                }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-                cx="55" 
-                cy="22" 
-                r="2" 
-                fill="#ffffff"
-              />
-              <motion.circle
-                animate={{ 
-                  scale: currentSlide === 0 ? [1, 1.2, 1] : 1,
-                  opacity: currentSlide === 0 ? [1, 0.5, 1] : 1
-                }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-                cx="65" 
-                cy="22" 
-                r="2" 
-                fill="#ffffff"
-              />
-              
-              {/* Mouth - changes expression based on slide */}
-              <motion.path
-                animate={{
-                  d: currentSlide === 0 ? "M 50 30 Q 60 35 70 30" : // Happy smile
-                     currentSlide === 1 ? "M 50 30 Q 60 25 70 30" : // Excited smile
-                     "M 50 30 Q 60 35 70 30" // Default smile
-                }}
-                transition={{ duration: 0.3 }}
-                fill="none" 
-                stroke="#ffffff" 
-                strokeWidth="2"
-              />
-              
-              {/* Body */}
-              <line 
-                x1="60" 
-                y1="37" 
-                x2="60" 
-                y2="80" 
-                stroke="#ffffff" 
-                strokeWidth="3"
-              />
-              
-              {/* Arms - animated pulling motion */}
-              <motion.line
-                animate={{
-                  x1: [50, 45, 50],
-                  y1: [50, 45, 50],
-                  x2: [70, 75, 70],
-                  y2: [50, 45, 50]
-                }}
-                transition={{ 
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                stroke="#ffffff" 
-                strokeWidth="3"
-              />
-              
-              {/* Legs */}
-              <line 
-                x1="60" 
-                y1="80" 
-                x2="50" 
-                y2="100" 
-                stroke="#ffffff" 
-                strokeWidth="3"
-              />
-              <line 
-                x1="60" 
-                y1="80" 
-                x2="70" 
-                y2="100" 
-                stroke="#ffffff" 
-                strokeWidth="3"
-              />
-              
-              {/* Pulling rope/line */}
-              <motion.line
-                animate={{
-                  x1: [75, 85, 75],
-                  y1: [45, 45, 45],
-                  x2: [200, 220, 200],
-                  y2: [45, 45, 45]
-                }}
-                transition={{ 
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                stroke="#ffffff" 
-                strokeWidth="2"
-                strokeDasharray="5,5"
-                opacity="0.7"
-              />
-            </svg>
+          {/* Big Stick Figure Character */}
+          <svg width="200" height="200" viewBox="0 0 200 200" className="drop-shadow-2xl">
+            {/* Head */}
+            <circle 
+              cx="100" 
+              cy="40" 
+              r="20" 
+              fill="none" 
+              stroke="#ffffff" 
+              strokeWidth="4"
+              className="drop-shadow-lg"
+            />
             
-            {/* Speech bubble */}
+            {/* Eyes - animated based on slide */}
+            <motion.circle
+              animate={{ 
+                scale: currentSlide === 0 ? [1, 1.3, 1] : 1,
+                opacity: currentSlide === 0 ? [1, 0.3, 1] : 1
+              }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+              cx="90" 
+              cy="35" 
+              r="3" 
+              fill="#ffffff"
+            />
+            <motion.circle
+              animate={{ 
+                scale: currentSlide === 0 ? [1, 1.3, 1] : 1,
+                opacity: currentSlide === 0 ? [1, 0.3, 1] : 1
+              }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+              cx="110" 
+              cy="35" 
+              r="3" 
+              fill="#ffffff"
+            />
+            
+            {/* Mouth - changes expression based on slide */}
+            <motion.path
+              animate={{
+                d: currentSlide === 0 ? "M 80 50 Q 100 60 120 50" : // Big happy smile
+                   currentSlide === 1 ? "M 80 50 Q 100 40 120 50" : // Excited smile
+                   "M 80 50 Q 100 55 120 50" // Default smile
+              }}
+              transition={{ duration: 0.5 }}
+              fill="none" 
+              stroke="#ffffff" 
+              strokeWidth="3"
+            />
+            
+            {/* Body */}
+            <line 
+              x1="100" 
+              y1="60" 
+              x2="100" 
+              y2="130" 
+              stroke="#ffffff" 
+              strokeWidth="5"
+            />
+            
+            {/* Arms - different poses based on slide */}
+            <motion.line
+              animate={{
+                x1: currentSlide === 0 ? [70, 60, 70] : currentSlide === 1 ? [80, 75, 80] : [75, 70, 75],
+                y1: currentSlide === 0 ? [80, 70, 80] : currentSlide === 1 ? [85, 80, 85] : [90, 85, 90],
+                x2: currentSlide === 0 ? [130, 140, 130] : currentSlide === 1 ? [120, 125, 120] : [125, 130, 125],
+                y2: currentSlide === 0 ? [80, 70, 80] : currentSlide === 1 ? [85, 80, 85] : [90, 85, 90]
+              }}
+              transition={{ 
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              stroke="#ffffff" 
+              strokeWidth="5"
+            />
+            
+            {/* Legs */}
+            <line 
+              x1="100" 
+              y1="130" 
+              x2="80" 
+              y2="170" 
+              stroke="#ffffff" 
+              strokeWidth="5"
+            />
+            <line 
+              x1="100" 
+              y1="130" 
+              x2="120" 
+              y2="170" 
+              stroke="#ffffff" 
+              strokeWidth="5"
+            />
+            
+            {/* Carrying items based on slide */}
+            {currentSlide === 1 && (
+              <motion.g
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                {/* Carrying a service icon */}
+                <circle cx="140" cy="70" r="15" fill="#ffffff" opacity="0.8" />
+                <text x="140" y="75" textAnchor="middle" fontSize="12" fill="#1f2937">🌐</text>
+              </motion.g>
+            )}
+            
+            {currentSlide === 2 && (
+              <motion.g
+                animate={{ 
+                  y: [0, -15, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                {/* Carrying a project icon */}
+                <rect x="125" y="60" width="20" height="20" fill="#ffffff" opacity="0.8" rx="3" />
+                <text x="135" y="72" textAnchor="middle" fontSize="10" fill="#1f2937">💻</text>
+              </motion.g>
+            )}
+          </svg>
+          
+          {/* Speech bubble */}
+          <motion.div
+            animate={{ 
+              scale: [1, 1.15, 1],
+              opacity: [0.9, 1, 0.9]
+            }}
+            transition={{ 
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -top-20 -left-10 bg-white/95 backdrop-blur-sm rounded-3xl px-6 py-3 border border-white/30 shadow-lg"
+          >
+            <p className="text-base font-bold text-gray-800">
+              {currentSlide === 0 ? "Let me show you!" : 
+               currentSlide === 1 ? "Here are our services!" : 
+               "Check out our work!"}
+            </p>
+            <div className="absolute bottom-0 left-8 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-white/95"></div>
+          </motion.div>
+          
+          {/* Action lines showing movement */}
+          <motion.div
+            animate={{ 
+              opacity: [0, 1, 0],
+              scale: [0.8, 1.2, 0.8]
+            }}
+            transition={{ 
+              duration: 1,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -right-8 top-16"
+          >
+            <svg width="40" height="40" viewBox="0 0 40 40">
+              <path d="M5 20 L15 15 L25 20 L35 15" stroke="#ffffff" strokeWidth="2" fill="none" opacity="0.6" />
+              <path d="M5 25 L15 20 L25 25 L35 20" stroke="#ffffff" strokeWidth="2" fill="none" opacity="0.4" />
+            </svg>
+          </motion.div>
+          
+          {/* Dropping animation for features */}
+          {currentSlide === 1 && (
             <motion.div
               animate={{ 
-                scale: [1, 1.1, 1],
-                opacity: [0.8, 1, 0.8]
+                y: [0, 50, 0],
+                opacity: [1, 0, 1],
+                scale: [1, 0.5, 1]
               }}
               transition={{ 
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
+                delay: 1
               }}
-              className="absolute -top-16 -left-8 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 border border-white/20"
+              className="absolute top-32 right-4"
             >
-              <p className="text-sm font-semibold text-gray-800">
-                {currentSlide === 0 ? "Pull!" : 
-                 currentSlide === 1 ? "Services!" : 
-                 "Projects!"}
-              </p>
-              <div className="absolute bottom-0 left-6 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/90"></div>
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                ✨
+              </div>
             </motion.div>
-            
-            {/* Excitement particles */}
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{ 
-                  y: [0, -20, 0],
-                  x: [0, Math.random() * 20 - 10, 0],
-                  opacity: [0, 1, 0],
-                  scale: [0.5, 1, 0.5]
-                }}
-                transition={{ 
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.3
-                }}
-                className="absolute w-2 h-2 bg-yellow-400 rounded-full"
-                style={{
-                  left: `${60 + (i - 1) * 15}px`,
-                  top: `${10 + i * 5}px`
-                }}
-              />
-            ))}
-          </div>
+          )}
+          
+          {/* Pushing animation */}
+          <motion.div
+            animate={{ 
+              x: [0, 20, 0],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ 
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -left-12 top-20"
+          >
+            <div className="flex space-x-1">
+              <div className="w-2 h-2 bg-white/60 rounded-full"></div>
+              <div className="w-2 h-2 bg-white/60 rounded-full"></div>
+              <div className="w-2 h-2 bg-white/60 rounded-full"></div>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
 
