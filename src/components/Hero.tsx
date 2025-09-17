@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRightIcon, PlayIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRightIcon, PlayIcon, SparklesIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect } from 'react';
 
 const techQuotes = [
   "Innovation distinguishes between a leader and a follower.",
@@ -10,7 +11,76 @@ const techQuotes = [
   "The future belongs to those who believe in the beauty of their dreams."
 ];
 
+const slides = [
+  {
+    id: 1,
+    type: 'main',
+    title: 'Always',
+    subtitle: 'Innovative',
+    description: 'Experience the full potential of digital innovation with SG Innovations. We create stunning visuals, powerful web solutions, and cutting-edge software.',
+    quote: techQuotes[0],
+    author: 'Steve Jobs'
+  },
+  {
+    id: 2,
+    type: 'services',
+    title: 'Our Services',
+    subtitle: 'What We Offer',
+    description: 'Comprehensive digital solutions tailored to your business needs',
+    services: [
+      { name: 'Web Development', icon: '🌐', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Graphics Design', icon: '🎨', color: 'from-purple-500 to-pink-500' },
+      { name: 'Mobile Apps', icon: '📱', color: 'from-green-500 to-emerald-500' },
+      { name: 'Digital Marketing', icon: '📈', color: 'from-orange-500 to-red-500' }
+    ],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+  },
+  {
+    id: 3,
+    type: 'portfolio',
+    title: 'Featured Work',
+    subtitle: 'Recent Projects',
+    description: 'Showcasing our expertise through innovative solutions',
+    projects: [
+      { name: 'E-Commerce Platform', tech: 'React, Node.js' },
+      { name: 'Brand Identity Design', tech: 'Adobe Creative Suite' },
+      { name: 'AI Analytics Dashboard', tech: 'Python, TensorFlow' },
+      { name: 'Mobile Banking App', tech: 'React Native' }
+    ],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+  }
+];
+
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-advance slides
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient and unique animated elements */}
@@ -137,7 +207,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Animated Cartoon Character pushing content */}
+      {/* Animated Cartoon Character */}
       <motion.div
         initial={{ x: -200, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -154,10 +224,11 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl"
+          className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl cursor-pointer"
+          onClick={nextSlide}
         >
           <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
           </svg>
         </motion.div>
         <motion.div
@@ -171,110 +242,225 @@ export default function Hero() {
           }}
           className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center"
         >
-          <span className="text-xs font-bold text-gray-800">!</span>
+          <span className="text-xs font-bold text-gray-800">→</span>
         </motion.div>
       </motion.div>
 
-      {/* Main content being pushed from left */}
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="space-y-8"
+      {/* Slide Container */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="text-center"
+          >
+            {slides[currentSlide].type === 'main' && (
+              <div className="space-y-8">
+                {/* Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium"
+                >
+                  <SparklesIcon className="h-4 w-4 text-yellow-400" />
+                  <span>Innovation Meets Excellence</span>
+                </motion.div>
+
+                {/* Main heading */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+                >
+                  <span className="text-white">{slides[currentSlide].title}</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    {slides[currentSlide].subtitle}
+                  </span>
+                </motion.h1>
+
+                {/* Subheading */}
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+
+                {/* Tech Quote */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                  className="max-w-2xl mx-auto"
+                >
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <p className="text-lg text-gray-200 italic mb-2">
+                      "{slides[currentSlide].quote}"
+                    </p>
+                    <p className="text-sm text-gray-400">- {slides[currentSlide].author}</p>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+
+            {slides[currentSlide].type === 'services' && (
+              <div className="space-y-8">
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-4xl md:text-6xl font-bold tracking-tight"
+                >
+                  <span className="text-white">{slides[currentSlide].title}</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    {slides[currentSlide].subtitle}
+                  </span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="text-xl text-gray-300 max-w-2xl mx-auto"
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                  {slides[currentSlide].services?.map((service, index) => (
+                    <motion.div
+                      key={service.name}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
+                      className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    >
+                      <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-2xl`}>
+                        {service.icon}
+                      </div>
+                      <h3 className="text-white font-semibold text-lg">{service.name}</h3>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {slides[currentSlide].type === 'portfolio' && (
+              <div className="space-y-8">
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-4xl md:text-6xl font-bold tracking-tight"
+                >
+                  <span className="text-white">{slides[currentSlide].title}</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    {slides[currentSlide].subtitle}
+                  </span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="text-xl text-gray-300 max-w-2xl mx-auto"
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                  {slides[currentSlide].projects?.map((project, index) => (
+                    <motion.div
+                      key={project.name}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
+                      className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    >
+                      <h3 className="text-white font-semibold text-xl mb-2">{project.name}</h3>
+                      <p className="text-gray-300 text-sm">{project.tech}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
+            >
+              <a
+                href="#contact"
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              >
+                <span className="flex items-center gap-2">
+                  Get Started
+                  <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+              
+              <a
+                href="#about"
+                className="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
+              >
+                <span className="flex items-center gap-2">
+                  <PlayIcon className="h-5 w-5" />
+                  Learn More
+                </span>
+              </a>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation Controls */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4">
+        <button
+          onClick={prevSlide}
+          className="p-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium"
-          >
-            <SparklesIcon className="h-4 w-4 text-yellow-400" />
-            <span>Innovation Meets Excellence</span>
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-          >
-            <span className="text-white">Always</span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Innovative
-            </span>
-          </motion.h1>
-
-          {/* Subheading */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-          >
-            Experience the full potential of digital innovation with SG Innovations. 
-            We create stunning visuals, powerful web solutions, and cutting-edge software.
-          </motion.p>
-
-          {/* Tech Quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <p className="text-lg text-gray-200 italic mb-2">
-                "{techQuotes[0]}"
-              </p>
-              <p className="text-sm text-gray-400">- Steve Jobs</p>
-            </div>
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
-          >
-            <a
-              href="#contact"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
-            >
-              <span className="flex items-center gap-2">
-                Get Started
-                <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </a>
-            
-            <a
-              href="#about"
-              className="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
-            >
-              <span className="flex items-center gap-2">
-                <PlayIcon className="h-5 w-5" />
-                Learn More
-              </span>
-            </a>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          <ChevronLeftIcon className="h-6 w-6 text-white" />
+        </button>
+        
+        <div className="flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                index === currentSlide ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/60'
+              }`}
+            />
+          ))}
+        </div>
+        
+        <button
+          onClick={nextSlide}
+          className="p-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300"
+        >
+          <ChevronRightIcon className="h-6 w-6 text-white" />
+        </button>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 right-8"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
