@@ -1,77 +1,167 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, PlayIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Hero() {
   return (
-    <section id="home" className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
-          >
-            Innovating the Future of{' '}
-            <span className="text-blue-600">Technology</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 text-lg leading-8 text-gray-600"
-          >
-            We create cutting-edge digital solutions that transform businesses and enhance user experiences. 
-            From web applications to mobile solutions, we bring your ideas to life with modern technology.
-          </motion.p>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background with gradient and animated elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        {/* Floating geometric shapes */}
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg opacity-20 blur-sm"
+        />
+        <motion.div
+          animate={{ 
+            y: [0, 20, 0],
+            rotate: [0, -5, 0]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full opacity-20 blur-sm"
+        />
+        <motion.div
+          animate={{ 
+            y: [0, -15, 0],
+            x: [0, 10, 0]
+          }}
+          transition={{ 
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg opacity-20 blur-sm"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="space-y-8"
+        >
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium"
+          >
+            <SparklesIcon className="h-4 w-4 text-yellow-400" />
+            <span>Innovation Meets Excellence</span>
+          </motion.div>
+
+          {/* Main heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-10 flex items-center justify-center gap-x-6"
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+          >
+            <span className="text-white">Always</span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Innovative
+            </span>
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            Experience the full potential of digital innovation with SG Innovations. 
+            We create stunning visuals, powerful web solutions, and cutting-edge software.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
           >
             <a
               href="#contact"
-              className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200 flex items-center gap-2"
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
             >
-              Get Started
-              <ArrowRightIcon className="h-4 w-4" />
+              <span className="flex items-center gap-2">
+                Get Started
+                <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </a>
+            
             <a
               href="#about"
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors duration-200 flex items-center gap-2"
+              className="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
             >
-              Learn More
-              <PlayIcon className="h-4 w-4" />
+              <span className="flex items-center gap-2">
+                <PlayIcon className="h-5 w-5" />
+                Learn More
+              </span>
             </a>
           </motion.div>
-        </div>
-        
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none"
-        >
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            <div className="flex flex-col">
-              <dt className="text-base leading-7 text-gray-600">Projects Completed</dt>
-              <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">100+</dd>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 max-w-4xl mx-auto"
+          >
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">100+</div>
+              <div className="text-gray-300">Projects Delivered</div>
             </div>
-            <div className="flex flex-col">
-              <dt className="text-base leading-7 text-gray-600">Happy Clients</dt>
-              <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">50+</dd>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">50+</div>
+              <div className="text-gray-300">Happy Clients</div>
             </div>
-            <div className="flex flex-col">
-              <dt className="text-base leading-7 text-gray-600">Years Experience</dt>
-              <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">5+</dd>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">5+</div>
+              <div className="text-gray-300">Years Experience</div>
             </div>
-          </dl>
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1 h-3 bg-white/60 rounded-full mt-2"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
