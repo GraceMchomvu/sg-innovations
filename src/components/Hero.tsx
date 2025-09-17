@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, PlayIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
+const techQuotes = [
+  "Innovation distinguishes between a leader and a follower.",
+  "The best way to predict the future is to invent it.",
+  "Technology is nothing. What's important is that you have faith in people.",
+  "The future belongs to those who believe in the beauty of their dreams."
+];
+
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -130,7 +137,51 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
+      {/* Animated Cartoon Character pushing content */}
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute left-8 bottom-20 z-20"
+      >
+        <motion.div
+          animate={{ 
+            x: [0, 10, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl"
+        >
+          <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+        </motion.div>
+        <motion.div
+          animate={{ 
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center"
+        >
+          <span className="text-xs font-bold text-gray-800">!</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Main content being pushed from left */}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -173,11 +224,26 @@ export default function Hero() {
             We create stunning visuals, powerful web solutions, and cutting-edge software.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Tech Quote */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <p className="text-lg text-gray-200 italic mb-2">
+                "{techQuotes[0]}"
+              </p>
+              <p className="text-sm text-gray-400">- Steve Jobs</p>
+            </div>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
           >
             <a
@@ -200,9 +266,8 @@ export default function Hero() {
               </span>
             </a>
           </motion.div>
-
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
