@@ -14,19 +14,10 @@ const projects = [
     category: 'Web Development',
     gradient: 'from-blue-500 to-cyan-500',
     testimonial: '"Served so hot I burned myself" - John Smith',
+    visible: true,
   },
   {
     id: 2,
-    name: 'Mobile Banking App',
-    description: 'Secure mobile banking application with biometric authentication and real-time transactions.',
-    image: '/api/placeholder/600/400',
-    technologies: ['React Native', 'Firebase', 'Biometric Auth'],
-    category: 'Mobile Development',
-    gradient: 'from-purple-500 to-pink-500',
-    testimonial: '"I wish this company was real!" - You, probably',
-  },
-  {
-    id: 3,
     name: 'Brand Identity Design',
     description: 'Complete brand identity package including logo design, color palette, and marketing materials.',
     image: '/api/placeholder/600/400',
@@ -34,9 +25,10 @@ const projects = [
     category: 'Graphics Design',
     gradient: 'from-orange-500 to-red-500',
     testimonial: '"Revolutionary design that transformed our brand" - Sarah Johnson',
+    visible: true,
   },
   {
-    id: 4,
+    id: 3,
     name: 'AI-Powered Analytics',
     description: 'Machine learning platform for business intelligence and predictive data analytics.',
     image: '/api/placeholder/600/400',
@@ -44,6 +36,18 @@ const projects = [
     category: 'AI/ML',
     gradient: 'from-indigo-500 to-purple-500',
     testimonial: '"Cut our analysis time by 80%" - Tech Corp',
+    visible: true,
+  },
+  {
+    id: 4,
+    name: 'Digital Marketing Campaign',
+    description: 'Comprehensive digital marketing strategy with social media management and SEO optimization.',
+    image: '/api/placeholder/600/400',
+    technologies: ['Social Media', 'SEO', 'Content Marketing', 'Analytics'],
+    category: 'Digital Marketing',
+    gradient: 'from-green-500 to-emerald-500',
+    testimonial: '"Increased our online presence by 300%" - Local Business',
+    visible: true,
   },
 ];
 
@@ -136,11 +140,11 @@ export default function Portfolio() {
                   </div>
                   
                   <div className="flex gap-4">
-                    <button className={`flex items-center gap-2 bg-gradient-to-r ${projects[currentProject].gradient} text-white px-6 py-3 rounded-xl hover:opacity-90 transition-opacity font-semibold`}>
+                    <button className={`flex items-center gap-2 bg-gradient-to-r ${projects[currentProject].gradient} text-white px-6 py-3 rounded-xl hover:opacity-90 transition-opacity font-semibold shadow-lg`}>
                       <EyeIcon className="h-5 w-5" />
                       View Project
                     </button>
-                    <button className="flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors font-semibold">
+                    <button className="flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors font-semibold shadow-sm">
                       <CodeBracketIcon className="h-5 w-5" />
                       Case Study
                     </button>
@@ -148,14 +152,22 @@ export default function Portfolio() {
                 </div>
                 
                 {/* Project Visual */}
-                <div className={`bg-gradient-to-br ${projects[currentProject].gradient} p-12 flex items-center justify-center`}>
-                  <div className="text-center text-white">
-                    <div className="w-32 h-32 bg-white/20 rounded-2xl mx-auto mb-6 flex items-center justify-center backdrop-blur-sm">
-                      <div className="w-16 h-16 bg-white/30 rounded-xl"></div>
+                <div className={`bg-gradient-to-br ${projects[currentProject].gradient} p-12 flex items-center justify-center relative overflow-hidden`}>
+                  {/* Enhanced project mockup */}
+                  <div className="text-center text-white relative z-10">
+                    <div className="w-40 h-32 bg-white/20 rounded-2xl mx-auto mb-6 flex items-center justify-center backdrop-blur-sm border border-white/30 shadow-2xl">
+                      <div className="w-24 h-20 bg-white/30 rounded-xl flex items-center justify-center">
+                        <div className="w-16 h-12 bg-white/40 rounded-lg"></div>
+                      </div>
                     </div>
                     <p className="text-lg font-medium">Project Screenshot</p>
                     <p className="text-sm opacity-80 mt-2">Interactive Demo Available</p>
                   </div>
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full"></div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full"></div>
+                  <div className="absolute top-1/2 left-4 w-4 h-4 bg-white/20 rounded-full"></div>
                 </div>
               </div>
             </motion.div>

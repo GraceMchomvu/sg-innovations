@@ -48,7 +48,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 sm:py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%239C92AC%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl lg:text-center">
@@ -103,7 +103,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white">Email</p>
-                      <p className="text-sm text-gray-300">hello@sginnovations.com</p>
+                      <p className="text-sm text-gray-300">sginnovations36@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -112,7 +112,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white">Phone</p>
-                      <p className="text-sm text-gray-300">+1 (555) 123-4567</p>
+                      <p className="text-sm text-gray-300">+255627780637 / +255657788539</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -121,7 +121,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white">Address</p>
-                      <p className="text-sm text-gray-300">123 Innovation Street<br />Tech City, TC 12345</p>
+                      <p className="text-sm text-gray-300">Arusha, Tanzania</p>
                     </div>
                   </div>
                 </div>
