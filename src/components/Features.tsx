@@ -74,7 +74,7 @@ const features = [
 export default function Features() {
   return (
     <section id="services" className="py-24 sm:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -107,7 +107,7 @@ export default function Features() {
         </div>
         
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.name}
@@ -115,21 +115,21 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
               >
                 {/* Gradient background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
                 
                 <div className="relative">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${feature.gradient} mb-6`}>
-                    <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
+                  <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${feature.gradient} mb-4 sm:mb-6`}>
+                    <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" aria-hidden="true" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
                     {feature.name}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {feature.description}
                   </p>
                   

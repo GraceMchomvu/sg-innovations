@@ -12,8 +12,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="flex justify-center space-x-6 md:order-2">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12 md:flex md:items-center md:justify-between lg:px-8">
+        <div className="flex justify-center space-x-4 sm:space-x-6 md:order-2">
           <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors duration-200">
             <span className="sr-only">Facebook</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -53,17 +53,16 @@ export default function Footer() {
                   <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-white">SG Innovations</span>
+              <span className="text-lg sm:text-xl font-bold text-white">SG Innovations</span>
             </div>
             <p className="text-sm text-gray-400 text-center md:text-left">
               © {currentYear} SG Innovations. All rights reserved.
             </p>
-            <div className="flex items-center space-x-1 text-sm text-gray-400">
+            <div className="flex items-center justify-center md:justify-start space-x-1 text-xs sm:text-sm text-gray-400">
               <span>Made with</span>
               <HeartIcon className="h-4 w-4 text-red-500" />
               <span>and</span>
               <RocketLaunchIcon className="h-4 w-4 text-blue-400" />
-              <span>by our amazing team</span>
             </div>
           </motion.div>
         </div>
