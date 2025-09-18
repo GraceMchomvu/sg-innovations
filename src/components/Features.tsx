@@ -73,7 +73,7 @@ const features = [
 export default function Features() {
   return (
     <section id="services" className="py-24 sm:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            className="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-4xl"
           >
             Comprehensive Digital Solutions
           </motion.p>

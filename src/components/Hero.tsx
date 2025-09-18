@@ -543,7 +543,7 @@ export default function Hero() {
       </motion.div>
 
           {/* Slide Container - Centered */}
-          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-6 lg:px-8 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -582,7 +582,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 }}
-                      className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -596,7 +596,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
+                  className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
@@ -624,7 +624,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1 }}
-                      className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
+                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -637,7 +637,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4"
+                  className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
@@ -667,7 +667,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1 }}
-                      className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
+                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -680,7 +680,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4"
+                  className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
