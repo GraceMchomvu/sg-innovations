@@ -1,9 +1,14 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Disable Next.js plugin to avoid conflicts with static export
+# [plugins]
+#   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
   from = "/*"
@@ -13,4 +18,4 @@
 [dev]
   command = "npm run dev"
   port = 3000
-  publish = ".next"
+  publish = "out"

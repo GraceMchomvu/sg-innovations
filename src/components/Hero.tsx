@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRightIcon, PlayIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/outline';
 import { useState, useEffect } from 'react';
 
 const techQuotes = [
@@ -173,7 +173,7 @@ export default function Hero() {
           opacity: 1
         }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="fixed right-0 top-0 h-screen w-80 z-30 cursor-pointer flex items-center justify-center"
+        className="absolute right-0 top-0 h-screen w-80 z-30 cursor-pointer flex items-center justify-center"
         onClick={nextSlide}
       >
         <motion.div
@@ -294,19 +294,19 @@ export default function Hero() {
                 >
                   {/* Left arm - waving */}
                   <ellipse cx="70" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(-25 70 100)" />
-                  {/* Left hand - detailed */}
-                  <circle cx="65" cy="95" r="4" fill="#ffffff" />
-                  <circle cx="63" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="67" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="65" cy="96" r="1" fill="#1f2937" />
+                  {/* Left hand - properly connected */}
+                  <circle cx="62" cy="88" r="4" fill="#ffffff" />
+                  <circle cx="60" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="64" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="62" cy="89" r="1" fill="#1f2937" />
                   
                   {/* Right arm - waving */}
                   <ellipse cx="130" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(25 130 100)" />
-                  {/* Right hand - detailed */}
-                  <circle cx="135" cy="95" r="4" fill="#ffffff" />
-                  <circle cx="133" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="137" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="135" cy="96" r="1" fill="#1f2937" />
+                  {/* Right hand - properly connected */}
+                  <circle cx="138" cy="88" r="4" fill="#ffffff" />
+                  <circle cx="136" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="140" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="138" cy="89" r="1" fill="#1f2937" />
                 </motion.g>
               )}
               
@@ -324,17 +324,17 @@ export default function Hero() {
                 >
                   {/* Left arm - pointing */}
                   <ellipse cx="70" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(-35 70 100)" />
-                  {/* Left hand - pointing */}
-                  <circle cx="65" cy="95" r="4" fill="#ffffff" />
-                  <line x1="65" y1="95" x2="58" y2="85" stroke="#ffffff" strokeWidth="2" />
-                  <circle cx="58" cy="85" r="2" fill="#ffffff" />
+                  {/* Left hand - pointing finger */}
+                  <circle cx="62" cy="88" r="4" fill="#ffffff" />
+                  <line x1="62" y1="88" x2="55" y2="78" stroke="#ffffff" strokeWidth="2" />
+                  <circle cx="55" cy="78" r="2" fill="#ffffff" />
                   
                   {/* Right arm - supporting */}
                   <ellipse cx="130" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(15 130 100)" />
                   {/* Right hand - detailed */}
-                  <circle cx="135" cy="95" r="4" fill="#ffffff" />
-                  <circle cx="133" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="137" cy="92" r="1" fill="#1f2937" />
+                  <circle cx="138" cy="88" r="4" fill="#ffffff" />
+                  <circle cx="136" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="140" cy="85" r="1" fill="#1f2937" />
                 </motion.g>
               )}
               
@@ -353,17 +353,17 @@ export default function Hero() {
                   {/* Left arm - thumbs up */}
                   <ellipse cx="70" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(-20 70 100)" />
                   {/* Left hand - thumbs up */}
-                  <circle cx="65" cy="95" r="4" fill="#ffffff" />
-                  <line x1="68" y1="95" x2="72" y2="85" stroke="#ffffff" strokeWidth="2" />
-                  <circle cx="72" cy="85" r="2" fill="#ffffff" />
+                  <circle cx="62" cy="88" r="4" fill="#ffffff" />
+                  <line x1="65" y1="88" x2="69" y2="78" stroke="#ffffff" strokeWidth="2" />
+                  <circle cx="69" cy="78" r="2" fill="#ffffff" />
                   
                   {/* Right arm - celebration */}
                   <ellipse cx="130" cy="100" rx="8" ry="15" fill="#ffffff" transform="rotate(20 130 100)" />
                   {/* Right hand - detailed */}
-                  <circle cx="135" cy="95" r="4" fill="#ffffff" />
-                  <circle cx="133" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="137" cy="92" r="1" fill="#1f2937" />
-                  <circle cx="135" cy="96" r="1" fill="#1f2937" />
+                  <circle cx="138" cy="88" r="4" fill="#ffffff" />
+                  <circle cx="136" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="140" cy="85" r="1" fill="#1f2937" />
+                  <circle cx="138" cy="89" r="1" fill="#1f2937" />
                 </motion.g>
               )}
               
@@ -605,16 +605,6 @@ export default function Hero() {
           >
             {slides[currentSlide].type === 'main' && (
               <div className="space-y-8">
-                {/* Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium"
-                >
-                  <SparklesIcon className="h-4 w-4 text-yellow-400" />
-                  <span>Innovation Meets Excellence</span>
-                </motion.div>
 
                     {/* Main heading */}
                     <motion.h1

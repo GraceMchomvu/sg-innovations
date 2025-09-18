@@ -20,6 +20,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -31,14 +32,21 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
     try {
-      const response = await fetch('/api/contact', {
+      // Use Netlify Forms for static hosting
+      const netlifyFormData = new FormData();
+      netlifyFormData.append('form-name', 'contact');
+      netlifyFormData.append('name', formData.name);
+      netlifyFormData.append('email', formData.email);
+      netlifyFormData.append('company', formData.company || '');
+      netlifyFormData.append('message', formData.message);
+
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(netlifyFormData as unknown as Record<string, string>).toString()
       });
 
       if (response.ok) {
@@ -49,11 +57,11 @@ export default function Contact() {
           setFormData({ name: '', email: '', company: '', message: '' });
         }, 3000);
       } else {
-        throw new Error('Failed to send message');
+        setError('Failed to send message. Please try again.');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('Failed to send message. Please try again.');
+      setError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -84,7 +92,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
           >
-            Let's Build Something Amazing
+            Let&apos;s Build Something Amazing
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +102,7 @@ export default function Contact() {
             className="mt-6 text-lg leading-8 text-gray-300"
           >
             Ready to transform your ideas into reality? Contact us today for a free consultation 
-            and let's create something extraordinary together.
+            and let&apos;s create something extraordinary together.
           </motion.p>
         </div>
 
@@ -192,7 +200,8 @@ export default function Contact() {
               viewport={{ once: true }}
               className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20"
             >
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
@@ -254,6 +263,21 @@ export default function Contact() {
                     placeholder="Tell us about your project..."
                   />
                 </div>
+                
+                {/* Error Message */}
+                {error && (
+                  <div className="rounded-xl bg-red-500/10 border border-red-500/20 p-4">
+                    <p className="text-red-400 text-sm">{error}</p>
+                  </div>
+                )}
+                
+                {/* Success Message */}
+                {isSubmitted && (
+                  <div className="rounded-xl bg-green-500/10 border border-green-500/20 p-4">
+                    <p className="text-green-400 text-sm">Message sent successfully! We&apos;ll get back to you soon.</p>
+                  </div>
+                )}
+                
                 <div>
                   <button
                     type="submit"

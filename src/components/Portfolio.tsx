@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, EyeIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -156,9 +157,11 @@ export default function Portfolio() {
                   {/* Real project image */}
                   <div className="relative z-10 w-full h-full flex items-center justify-center">
                     <div className="w-full max-w-md h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                      <img 
+                      <Image 
                         src={projects[currentProject].image} 
                         alt={projects[currentProject].name}
+                        width={400}
+                        height={256}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />

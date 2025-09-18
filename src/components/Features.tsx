@@ -7,7 +7,6 @@ import {
   CloudIcon,
   CpuChipIcon,
   PaintBrushIcon,
-  RocketLaunchIcon,
   ChartBarIcon,
   GlobeAltIcon,
   ShieldCheckIcon,

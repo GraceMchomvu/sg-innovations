@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { 
   HeartIcon,
-  CodeBracketIcon,
   RocketLaunchIcon
 } from '@heroicons/react/24/outline';
 
