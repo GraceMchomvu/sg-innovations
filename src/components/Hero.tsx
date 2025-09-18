@@ -173,7 +173,7 @@ export default function Hero() {
           opacity: 1
         }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute right-0 top-0 h-screen w-32 sm:w-48 md:w-64 lg:w-80 xl:w-96 z-30 cursor-pointer flex items-center justify-center right-[-60px] sm:right-[-20px] md:right-0"
+        className="absolute bottom-4 right-4 w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 z-30 cursor-pointer flex items-center justify-center"
         onClick={nextSlide}
       >
         <motion.div
@@ -187,10 +187,10 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="relative opacity-60 sm:opacity-80 md:opacity-100"
+          className="relative"
         >
           {/* Full Height Cartoon Character */}
-          <svg width="400" height="600" viewBox="0 0 200 220" className="drop-shadow-2xl w-24 h-36 sm:w-40 sm:h-60 md:w-56 md:h-84 lg:w-72 lg:h-108 xl:w-80 xl:h-120">
+          <svg width="400" height="600" viewBox="0 0 200 220" className="drop-shadow-2xl w-40 h-60 sm:w-48 sm:h-72 md:w-56 md:h-84 lg:w-64 lg:h-96 xl:w-72 xl:h-108">
             {/* Character Body */}
             <g>
               {/* Head */}
@@ -436,35 +436,6 @@ export default function Hero() {
           </svg>
           
           {/* Talking Speech Bubble */}
-          <motion.div
-            animate={{ 
-              scale: [1, 1.15, 1],
-              opacity: [0.95, 1, 0.95]
-            }}
-            transition={{ 
-              duration: 0.8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute -top-24 -left-12 bg-white/98 backdrop-blur-sm rounded-3xl px-6 py-4 border border-white/40 shadow-xl"
-          >
-            <motion.p 
-              animate={{
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{ 
-                duration: 0.8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="text-sm font-bold text-gray-800"
-            >
-              {currentSlide === 0 ? "Welcome to SG Innovations!" : 
-               currentSlide === 1 ? "We offer amazing services!" : 
-               "Check out our portfolio!"}
-            </motion.p>
-            <div className="absolute bottom-0 left-10 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-white/98"></div>
-          </motion.div>
           
           {/* Slide-specific special effects */}
           
@@ -678,7 +649,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300"
                     >
                       <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-2xl`}>
                         {service.icon}
@@ -714,14 +685,14 @@ export default function Hero() {
                   {slides[currentSlide].description}
                 </motion.p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
                   {slides[currentSlide].projects?.map((project, index) => (
                     <motion.div
                       key={project.name}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300"
                     >
                       <h3 className="text-white font-semibold text-xl mb-2">{project.name}</h3>
                       <p className="text-gray-300 text-sm">{project.tech}</p>
