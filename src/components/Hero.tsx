@@ -173,7 +173,7 @@ export default function Hero() {
           opacity: 1
         }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute right-0 top-0 h-screen w-80 z-30 cursor-pointer flex items-center justify-center"
+        className="absolute right-0 top-0 h-screen w-48 sm:w-64 md:w-80 lg:w-96 xl:w-100 z-30 cursor-pointer flex items-center justify-center right-[-30px] sm:right-0"
         onClick={nextSlide}
       >
         <motion.div
@@ -190,7 +190,7 @@ export default function Hero() {
           className="relative"
         >
           {/* Full Height Cartoon Character */}
-          <svg width="400" height="600" viewBox="0 0 200 220" className="drop-shadow-2xl">
+          <svg width="400" height="600" viewBox="0 0 200 220" className="drop-shadow-2xl w-48 h-72 sm:w-64 sm:h-96 md:w-80 md:h-120 lg:w-96 lg:h-144 xl:w-100 xl:h-150">
             {/* Character Body */}
             <g>
               {/* Head */}
