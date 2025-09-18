@@ -134,7 +134,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white">Phone</p>
-                      <p className="text-sm text-gray-300">+255627780637 / +255657788539</p>
+                      <p className="text-sm text-gray-300">+255657788530 / +255627780637</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -146,10 +146,10 @@ export default function Contact() {
                     <div className="flex-1 min-w-0">
                       <p className="text-sm sm:text-base font-semibold text-white mb-1">WhatsApp</p>
                       <a 
-                        href="https://wa.me/2556277780637" 
+                        href="https://wa.me/255657788530" 
                         className="inline-flex items-center gap-2 text-sm sm:text-base text-gray-300 hover:text-green-400 transition-all duration-300 hover:underline group"
                       >
-                        <span className="font-medium">+2556277780637</span>
+                        <span className="font-medium">+255657788530</span>
                         <svg className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
