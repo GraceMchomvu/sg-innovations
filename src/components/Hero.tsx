@@ -575,7 +575,7 @@ export default function Hero() {
             className="text-center"
           >
             {slides[currentSlide].type === 'main' && (
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
 
                     {/* Main heading */}
                     <motion.h1
@@ -619,7 +619,7 @@ export default function Hero() {
             )}
 
             {slides[currentSlide].type === 'services' && (
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -642,19 +642,19 @@ export default function Hero() {
                   {slides[currentSlide].description}
                 </motion.p>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
                   {slides[currentSlide].services?.map((service, index) => (
                     <motion.div
                       key={service.name}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
                     >
-                      <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-2xl`}>
+                      <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-xl`}>
                         {service.icon}
                       </div>
-                      <h3 className="text-white font-semibold text-lg">{service.name}</h3>
+                      <h3 className="text-white font-semibold text-base sm:text-lg">{service.name}</h3>
                     </motion.div>
                   ))}
                 </div>
@@ -662,7 +662,7 @@ export default function Hero() {
             )}
 
             {slides[currentSlide].type === 'portfolio' && (
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -692,10 +692,10 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
                     >
-                      <h3 className="text-white font-semibold text-xl mb-2">{project.name}</h3>
-                      <p className="text-gray-300 text-sm">{project.tech}</p>
+                      <h3 className="text-white font-semibold text-lg sm:text-xl mb-2">{project.name}</h3>
+                      <p className="text-gray-300 text-sm sm:text-base">{project.tech}</p>
                     </motion.div>
                   ))}
                 </div>
