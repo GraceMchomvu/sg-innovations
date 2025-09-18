@@ -142,11 +142,11 @@ export default function Portfolio() {
                   
                   <div className="flex gap-4">
                     <button className={`flex items-center gap-2 bg-gradient-to-r ${projects[currentProject].gradient} text-white px-6 py-3 rounded-xl hover:opacity-90 transition-opacity font-semibold shadow-lg`}>
-                      <EyeIcon className="h-5 w-5" />
+                      <EyeIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                       View Project
                     </button>
                     <button className="flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors font-semibold shadow-sm">
-                      <CodeBracketIcon className="h-5 w-5" />
+                      <CodeBracketIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                       Case Study
                     </button>
                   </div>
@@ -181,13 +181,13 @@ export default function Portfolio() {
               onClick={prevProject}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-50 transition-colors duration-200"
             >
-              <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
+              <ChevronLeftIcon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
             </button>
             <button
               onClick={nextProject}
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-50 transition-colors duration-200"
             >
-              <ChevronRightIcon className="h-6 w-6 text-gray-600" />
+              <ChevronRightIcon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
             </button>
           </div>
 
