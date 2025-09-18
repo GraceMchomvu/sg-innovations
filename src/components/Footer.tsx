@@ -1,10 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  HeartIcon,
-  RocketLaunchIcon
-} from '@heroicons/react/24/outline';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -57,12 +53,6 @@ export default function Footer() {
             <p className="text-sm text-gray-400 text-center md:text-left">
               © {currentYear} SG Innovations. All rights reserved.
             </p>
-            <div className="flex items-center justify-center md:justify-start space-x-1 text-xs sm:text-sm text-gray-400">
-              <span>Made with</span>
-              <HeartIcon className="h-4 w-4 text-red-500" />
-              <span>and</span>
-              <RocketLaunchIcon className="h-4 w-4 text-blue-400" />
-            </div>
           </motion.div>
         </div>
       </div>
