@@ -18,7 +18,9 @@ const slides = [
     title: 'Always',
     subtitle: 'Innovative',
     description: 'Experience the full potential of digital innovation with SG Innovations. We create stunning visuals, powerful web solutions, and cutting-edge software.',
+    descriptionMobile: 'Digital innovation with stunning visuals and cutting-edge software.',
     quote: techQuotes[0],
+    quoteMobile: "Innovation distinguishes between a leader and a follower.",
     author: 'Steve Jobs'
   },
   {
@@ -27,11 +29,12 @@ const slides = [
     title: 'Our Services',
     subtitle: 'What We Offer',
     description: 'Comprehensive digital solutions tailored to your business needs',
+    descriptionMobile: 'Digital solutions for your business',
     services: [
-      { name: 'Web Development', icon: '🌐', color: 'from-blue-500 to-cyan-500' },
-      { name: 'Graphics Design', icon: '🎨', color: 'from-purple-500 to-pink-500' },
-      { name: 'Mobile Apps', icon: '📱', color: 'from-green-500 to-emerald-500' },
-      { name: 'Digital Marketing', icon: '📈', color: 'from-orange-500 to-red-500' }
+      { name: 'Web Development', nameMobile: 'Web Dev', icon: '🌐', color: 'from-blue-500 to-cyan-500' },
+      { name: 'Graphics Design', nameMobile: 'Design', icon: '🎨', color: 'from-purple-500 to-pink-500' },
+      { name: 'Mobile Apps', nameMobile: 'Mobile Apps', icon: '📱', color: 'from-green-500 to-emerald-500' },
+      { name: 'Digital Marketing', nameMobile: 'Marketing', icon: '📈', color: 'from-orange-500 to-red-500' }
     ],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
   },
@@ -41,11 +44,12 @@ const slides = [
     title: 'Featured Work',
     subtitle: 'Recent Projects',
     description: 'Showcasing our expertise through innovative solutions',
+    descriptionMobile: 'Our latest innovative projects',
     projects: [
-      { name: 'E-Commerce Platform', tech: 'React, Node.js' },
-      { name: 'Brand Identity Design', tech: 'Adobe Creative Suite' },
-      { name: 'AI Analytics Dashboard', tech: 'Python, TensorFlow' },
-      { name: 'Mobile Banking App', tech: 'React Native' }
+      { name: 'E-Commerce Platform', nameMobile: 'E-Commerce', tech: 'React, Node.js', techMobile: 'React' },
+      { name: 'Brand Identity Design', nameMobile: 'Brand Design', tech: 'Adobe Creative Suite', techMobile: 'Adobe' },
+      { name: 'AI Analytics Dashboard', nameMobile: 'AI Dashboard', tech: 'Python, TensorFlow', techMobile: 'Python' },
+      { name: 'Mobile Banking App', nameMobile: 'Banking App', tech: 'React Native', techMobile: 'React Native' }
     ],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
   }
@@ -72,7 +76,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-4 sm:py-0">
       {/* Beautiful Tech Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
         {/* Tech Grid Pattern */}
@@ -543,7 +547,7 @@ export default function Hero() {
       </motion.div>
 
           {/* Slide Container - Centered */}
-          <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-6 lg:px-8 w-full">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -575,14 +579,14 @@ export default function Hero() {
             className="text-center"
           >
             {slides[currentSlide].type === 'main' && (
-              <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
 
                     {/* Main heading */}
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 }}
-                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+                      className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -596,9 +600,10 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
+                  className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
                 >
-                  {slides[currentSlide].description}
+                  <span className="sm:hidden">{slides[currentSlide].descriptionMobile}</span>
+                  <span className="hidden sm:inline">{slides[currentSlide].description}</span>
                 </motion.p>
 
                 {/* Tech Quote */}
@@ -608,23 +613,24 @@ export default function Hero() {
                   transition={{ duration: 1, delay: 0.8 }}
                   className="max-w-2xl mx-auto"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <p className="text-lg text-gray-200 italic mb-2">
-                      &ldquo;{slides[currentSlide].quote}&rdquo;
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20">
+                    <p className="text-sm sm:text-lg text-gray-200 italic mb-2">
+                      &ldquo;<span className="sm:hidden">{slides[currentSlide].quoteMobile}</span><span className="hidden sm:inline">{slides[currentSlide].quote}</span>&rdquo;
                     </p>
-                    <p className="text-sm text-gray-400">- {slides[currentSlide].author}</p>
+                    <p className="text-xs sm:text-sm text-gray-400">- {slides[currentSlide].author}</p>
                   </div>
                 </motion.div>
               </div>
             )}
 
             {slides[currentSlide].type === 'services' && (
-              <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
+                    {/* Desktop Only Heading */}
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1 }}
-                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+                      className="hidden sm:block text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -633,41 +639,238 @@ export default function Hero() {
                   </span>
                 </motion.h1>
 
+                {/* Desktop Only Description */}
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4"
+                  className="hidden sm:block text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto px-4"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                  {slides[currentSlide].services?.map((service, index) => (
-                    <motion.div
-                      key={service.name}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
-                    >
-                      <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-xl`}>
-                        {service.icon}
-                      </div>
-                      <h3 className="text-white font-semibold text-base sm:text-lg">{service.name}</h3>
-                    </motion.div>
-                  ))}
+                {/* Creative Service Icons Layout */}
+                <div className="relative max-w-5xl mx-auto">
+                  {/* Mobile Grid Fallback - Hidden on larger screens */}
+                  <div className="block sm:hidden">
+                    <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto">
+                      {slides[currentSlide].services?.map((service, index) => (
+                        <motion.div
+                          key={service.name}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
+                          className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                        >
+                          <div className={`w-8 h-8 mx-auto mb-1 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-sm`}>
+                            {service.icon}
+                          </div>
+                          <h3 className="text-white font-semibold text-xs text-center leading-tight">{service.nameMobile}</h3>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Desktop Creative Layout - Hidden on mobile */}
+                  <div className="hidden sm:block">
+                  {/* Service Icons in Top-Bottom Arrangement */}
+                  <div className="relative h-80 sm:h-96 flex flex-col items-center justify-center space-y-8">
+                    {/* Top Row - 2 Icons */}
+                    <div className="flex space-x-12">
+                      {slides[currentSlide].services?.slice(0, 2).map((service, index) => (
+                        <motion.div
+                          key={service.name}
+                          initial={{ 
+                            opacity: 0, 
+                            scale: 0,
+                            y: -50
+                          }}
+                          animate={{ 
+                            opacity: 1, 
+                            scale: 1,
+                            y: 0
+                          }}
+                          transition={{ 
+                            duration: 1.2, 
+                            delay: 0.5 + index * 0.15,
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 15
+                          }}
+                          whileHover={{ 
+                            scale: 1.15,
+                            y: -10,
+                            transition: { duration: 0.3 }
+                          }}
+                          className="group cursor-pointer"
+                        >
+                          {/* Service Card */}
+                          <motion.div
+                            whileHover={{ 
+                              rotateY: 10,
+                              rotateX: 5
+                            }}
+                            className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl min-w-[120px] sm:min-w-[140px]"
+                          >
+                            {/* Icon Container with Enhanced Effects */}
+                            <motion.div
+                              whileHover={{ 
+                                rotate: 360,
+                                scale: 1.1
+                              }}
+                              transition={{ duration: 0.6 }}
+                              className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-gradient-to-r ${service.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-lg sm:text-2xl relative overflow-hidden`}
+                            >
+                              {/* Animated Background Pattern */}
+                              <motion.div
+                                animate={{ 
+                                  rotate: 360,
+                                  scale: [1, 1.2, 1]
+                                }}
+                                transition={{ 
+                                  duration: 3,
+                                  repeat: Infinity,
+                                  ease: "linear"
+                                }}
+                                className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl sm:rounded-2xl"
+                              />
+                              <span className="relative z-10">{service.icon}</span>
+                            </motion.div>
+                            
+                            {/* Service Name */}
+                            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base text-center group-hover:text-blue-300 transition-colors duration-300">
+                              {service.name}
+                            </h3>
+                            
+                            {/* Hover Effect Glow */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              whileHover={{ opacity: 1 }}
+                              className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl sm:rounded-2xl pointer-events-none"
+                            />
+                          </motion.div>
+                          
+                          {/* Floating Particles */}
+                          <motion.div
+                            animate={{ 
+                              y: [0, -20, 0],
+                              opacity: [0, 1, 0]
+                            }}
+                            transition={{ 
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: index * 0.5
+                            }}
+                            className="absolute -top-2 -right-2 w-2 h-2 bg-yellow-400 rounded-full"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                    
+                    {/* Bottom Row - 2 Icons */}
+                    <div className="flex space-x-12">
+                      {slides[currentSlide].services?.slice(2, 4).map((service, index) => (
+                        <motion.div
+                          key={service.name}
+                          initial={{ 
+                            opacity: 0, 
+                            scale: 0,
+                            y: 50
+                          }}
+                          animate={{ 
+                            opacity: 1, 
+                            scale: 1,
+                            y: 0
+                          }}
+                          transition={{ 
+                            duration: 1.2, 
+                            delay: 0.8 + index * 0.15,
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 15
+                          }}
+                          whileHover={{ 
+                            scale: 1.15,
+                            y: -10,
+                            transition: { duration: 0.3 }
+                          }}
+                          className="group cursor-pointer"
+                        >
+                          {/* Service Card */}
+                          <motion.div
+                            whileHover={{ 
+                              rotateY: 10,
+                              rotateX: 5
+                            }}
+                            className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl min-w-[120px] sm:min-w-[140px]"
+                          >
+                            {/* Icon Container with Enhanced Effects */}
+                            <motion.div
+                              whileHover={{ 
+                                rotate: 360,
+                                scale: 1.1
+                              }}
+                              transition={{ duration: 0.6 }}
+                              className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-gradient-to-r ${service.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-lg sm:text-2xl relative overflow-hidden`}
+                            >
+                              {/* Animated Background Pattern */}
+                              <motion.div
+                                animate={{ 
+                                  rotate: 360,
+                                  scale: [1, 1.2, 1]
+                                }}
+                                transition={{ 
+                                  duration: 3,
+                                  repeat: Infinity,
+                                  ease: "linear"
+                                }}
+                                className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl sm:rounded-2xl"
+                              />
+                              <span className="relative z-10">{service.icon}</span>
+                            </motion.div>
+                            
+                            {/* Service Name */}
+                            <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base text-center group-hover:text-blue-300 transition-colors duration-300">
+                              {service.name}
+                            </h3>
+                            
+                            {/* Hover Effect Glow */}
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              whileHover={{ opacity: 1 }}
+                              className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl sm:rounded-2xl pointer-events-none"
+                            />
+                          </motion.div>
+                          
+                          {/* Floating Particles */}
+                          <motion.div
+                            animate={{ 
+                              y: [0, -20, 0],
+                              opacity: [0, 1, 0]
+                            }}
+                            transition={{ 
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: (index + 2) * 0.5
+                            }}
+                            className="absolute -top-2 -right-2 w-2 h-2 bg-yellow-400 rounded-full"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                  </div>
                 </div>
               </div>
             )}
 
             {slides[currentSlide].type === 'portfolio' && (
-              <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1 }}
-                      className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+                      className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold tracking-tight"
                     >
                   <span className="text-white">{slides[currentSlide].title}</span>
                   <br />
@@ -680,22 +883,29 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4"
+                  className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto px-4"
                 >
-                  {slides[currentSlide].description}
+                  <span className="sm:hidden">{slides[currentSlide].descriptionMobile}</span>
+                  <span className="hidden sm:inline">{slides[currentSlide].description}</span>
                 </motion.p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-3xl mx-auto">
                   {slides[currentSlide].projects?.map((project, index) => (
                     <motion.div
                       key={project.name}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1, delay: 0.4 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
                     >
-                      <h3 className="text-white font-semibold text-lg sm:text-xl mb-2">{project.name}</h3>
-                      <p className="text-gray-300 text-sm sm:text-base">{project.tech}</p>
+                      <h3 className="text-white font-semibold text-xs sm:text-lg md:text-xl mb-1 sm:mb-2">
+                        <span className="sm:hidden">{project.nameMobile}</span>
+                        <span className="hidden sm:inline">{project.name}</span>
+                      </h3>
+                      <p className="text-gray-300 text-xs sm:text-sm md:text-base">
+                        <span className="sm:hidden">{project.techMobile}</span>
+                        <span className="hidden sm:inline">{project.tech}</span>
+                      </p>
                     </motion.div>
                   ))}
                 </div>
@@ -707,13 +917,13 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 1 }}
-                  className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+                  className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-8"
                 >
                   <a
                     href="https://wa.me/233244123456?text=Hello%20SG%20Innovations!%20I%20would%20like%20to%20discuss%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                    className="group relative px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-2xl text-sm sm:text-base"
                   >
                     <span className="flex items-center gap-2">
                       <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -735,7 +945,7 @@ export default function Hero() {
                   
                   <a
                     href="#about"
-                    className="group px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
+                    className="group px-4 py-2 sm:px-6 sm:py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
                   >
                     <span className="flex items-center gap-2">
                       <PlayIcon className="h-4 w-4 sm:h-5 sm:w-5" />
